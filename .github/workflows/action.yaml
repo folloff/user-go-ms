@@ -25,7 +25,7 @@ jobs:
 #      - name: Login to Docker Registry
 #        run: docker login -u ${{ secrets.REGISTRY_TOKEN }} -p ${{ secrets.REGISTRY_TOKEN }} $REGISTRY
       - name: Install doctl
-        uses: digitalocean/action-doctl@v1.99.0
+        uses: digitalocean/action-doctl@v1
         with:
           token: ${{ secrets.REGISTRY_TOKEN }}
 
