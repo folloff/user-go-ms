@@ -16,6 +16,7 @@ type server struct {
 	desc.UnimplementedUserV1Server
 }
 
+// Get ...
 func (s *server) Get(ctx context.Context, req *desc.GetUserRequest) (*desc.GetUserResponse, error) {
 	log.Printf("Note id: %d", req.GetPublicId())
 
