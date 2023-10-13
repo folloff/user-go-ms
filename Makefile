@@ -34,6 +34,6 @@ docker-build-and-push:
 	docker buildx build --no-cache --platform linux/amd64 -t registry.digitalocean.com/folloff/auth-ms:v0.0.2 .
 	# Notice: Login valid for 30 days. Use the --expiry-seconds flag to set a shorter expiration or --never-expire for no expiration.
 	doctl registry login -c config/docker-config.json -t TOKEN
-	# docker login -u  TOKEN -p TOKEN registry.digitalocean.com
+	# docker login -u TOKEN -p TOKEN registry.digitalocean.com
 	docker push registry.digitalocean.com/folloff/auth-ms:v0.0.2
 
