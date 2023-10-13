@@ -10,7 +10,7 @@ env:
   REGISTRY: "registry.digitalocean.com/folloff"
   IMAGE_NAME: "auth-ms"
   CONTAINER_NAME: "auth-ms-container"
-  ROOT_DIRECTORY: "/github.com/folloff/auth-go-ms/grpc/source"
+  ROOT_DIR: "/github.com/folloff/auth-go-ms/grpc/source"
 
 jobs:
   image-build-and-push:
@@ -37,7 +37,7 @@ jobs:
         run: |
           TAG_NAME=$(echo $GITHUB_SHA | head -c7)
           docker buildx create --use
-          docker buildx build --no-cache --push --tag $REGISTRY/$IMAGE_NAME:$TAG_NAME -f ${{ROOT_DIRECTORY}}/Dockerfile ${{ROOT_DIRECTORY}}/
+          docker buildx build --no-cache --push --tag $REGISTRY/$IMAGE_NAME:$TAG_NAME -f ROOT_DIR/Dockerfile ROOT_DIR/
 
   deploy-image:
     runs-on: ubuntu-latest
