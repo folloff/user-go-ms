@@ -23,11 +23,11 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
 #      - name: Login to Docker Registry
-#        run: docker login -u ${{ secrets.REGISTRY_TOKEN }} -p ${{ secrets.REGISTRY_TOKEN }} $REGISTRY
+#        run: docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} $REGISTRY
       - name: Install doctl
         uses: digitalocean/action-doctl@v1
         with:
-          token: ${{ secrets.REGISTRY_TOKEN }}
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Build and Push Docker Image
         run: |
@@ -52,7 +52,7 @@ jobs:
             TAG_NAME=$(echo $GITHUB_SHA | head -c7)
             
             # Login into Selectel Registry
-            docker login -u ${{ secrets.REGISTRY_TOKEN }} -p ${{ secrets.REGISTRY_TOKEN }} $REGISTRY
+            docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} $REGISTRY
             
             # Stop running container
             docker stop $CONTAINER_NAME
